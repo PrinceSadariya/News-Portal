@@ -26,7 +26,7 @@ if (!empty($universityName) && !empty($universityCity) && !empty($universityStat
         $updated = $universityObject->updateUniversity($universityId);
 
         if ($updated) {
-            echo "university has been updated";
+            echo "University has been updated";
         } else {
             echo "Error in updating university";
         }

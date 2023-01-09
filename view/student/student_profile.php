@@ -3,11 +3,17 @@ require './header.php';
 ?>
 <div class="container px-0 bg-light my-2">
 
-    <!-- FOR SUCCESS MESSAGE SHOWING  -->
-    <!-- <div id="resultMsg" class="alert alert-success alert-dismissible fade show" role="alert">
-        Your profile picture has been changed
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div> -->
+    <!-- FOR PROFILE CHANGE SUCCESS MESSAGE SHOWING  -->
+    <?php
+    if (isset($_GET["profile"]) && $_GET["profile"] == "change") {
+    ?>
+        <div id="resultMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+            Your profile picture has been changed
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    }
+    ?>
 
     <!-- MODAL FOR PROFILE IMAGE -->
     <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

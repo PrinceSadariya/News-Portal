@@ -35,6 +35,20 @@ if ($deleteSucces) {
     </div>
 <?php
 }
+if (isset($_GET["success_msg"])) {
+?>
+    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+        <?php
+        if ($_GET["success_msg"] == "insert") {
+            echo "Banner has been inserted successfully";
+        } elseif ($_GET["success_msg"] == "update") {
+            echo "Banner has been updated successfully";
+        }
+        ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+}
 ?>
 
 <div class="p-3">
@@ -48,56 +62,58 @@ if ($deleteSucces) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <tr>
-                    <th>#</th>
-                    <th>Banner Image</th>
-                    <th>Banner Title</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-center">Action</th>
-                </tr>
-
-
-                <?php
-                $bannerObject = new Banner();
-                $allBanner = $bannerObject->fetchBanner();
-
-                //CHECKING SUPER ADMIN LOGIN
-                $accessBlock = null;
-                $actionClass = " cursor-pointer ";
-                if (!$superAdmin) {
-                    $accessBlock = " disabled ";
-                    $actionClass = " opacity-25 ";
-                }
-                $i = 0;
-                foreach ($allBanner as $banner) {
-                    if ($banner["banner_status"] == 1) {
-                        $switchBtn = '<div class="form-check form-switch d-flex justify-content-center">
-                                        <input class="bannerStatusSwitch form-check-input" type="checkbox" role="switch" id="s' . $banner["banner_id"] . '" checked ' . $accessBlock . '>
-                                    </div>';
-                    } else if ($banner["banner_status"] == 2) {
-                        $switchBtn = '<div class="form-check form-switch d-flex justify-content-center">
-                                        <input class="bannerStatusSwitch form-check-input" type="checkbox" role="switch" id="s' . $banner["banner_id"] . '" ' . $accessBlock . '>
-                                    </div>';
-                    }
-
-
-                    $i++;
-                ?>
+            <table id="bannerTable" class="table table-bordered table-hover">
+                <thead>
                     <tr>
-                        <td><?php echo $i; ?></td>
-                        <td><img src="../../lib/images/banner/<?php echo $banner["banner_image"]; ?>" alt="Banner Image" height="100" width="150"></td>
-                        <td><?php echo $banner["banner_title"]; ?></td>
-                        <td><?php echo $switchBtn ?></td>
-
-                        <td class="text-center">
-                            <span id="e<?php echo $banner["banner_id"]; ?>" class="<?php echo $actionClass; ?> editBtns fas fa-pen text-primary me-2"></span>
-                            <span id="d<?php echo $banner["banner_id"]; ?>" class="<?php echo $actionClass; ?> deleteBtns fas fa-trash-can text-danger ms-2"></span>
-                        </td>
+                        <th>#</th>
+                        <th>Banner Image</th>
+                        <th>Banner Title</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Action</th>
                     </tr>
-                <?php
-                }
-                ?>
+                </thead>
+                <tbody>
+                    <?php
+                    $bannerObject = new Banner();
+                    $allBanner = $bannerObject->fetchBanner();
+
+                    //CHECKING SUPER ADMIN LOGIN
+                    $accessBlock = null;
+                    $actionClass = " cursor-pointer ";
+                    if (!$superAdmin) {
+                        $accessBlock = " disabled ";
+                        $actionClass = " opacity-25 ";
+                    }
+                    $i = 0;
+                    foreach ($allBanner as $banner) {
+                        if ($banner["banner_status"] == 1) {
+                            $switchBtn = '<div class="form-check form-switch d-flex justify-content-center">
+                        <input class="bannerStatusSwitch form-check-input" type="checkbox" role="switch" id="s' . $banner["banner_id"] . '" checked ' . $accessBlock . '>
+                        </div>';
+                        } else if ($banner["banner_status"] == 2) {
+                            $switchBtn = '<div class="form-check form-switch d-flex justify-content-center">
+                        <input class="bannerStatusSwitch form-check-input" type="checkbox" role="switch" id="s' . $banner["banner_id"] . '" ' . $accessBlock . '>
+                        </div>';
+                        }
+
+
+                        $i++;
+                    ?>
+                        <tr>
+                            <td><?php echo $i; ?></td>
+                            <td><img src="../../lib/images/banner/<?php echo $banner["banner_image"]; ?>" alt="Banner Image" height="100" width="150"></td>
+                            <td><?php echo $banner["banner_title"]; ?></td>
+                            <td><?php echo $switchBtn ?></td>
+
+                            <td class="text-center">
+                                <span id="e<?php echo $banner["banner_id"]; ?>" class="<?php echo $actionClass; ?> editBtns fas fa-pen text-primary me-2"></span>
+                                <span id="d<?php echo $banner["banner_id"]; ?>" class="<?php echo $actionClass; ?> deleteBtns fas fa-trash-can text-danger ms-2"></span>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
             </table>
         </div>
     </div>

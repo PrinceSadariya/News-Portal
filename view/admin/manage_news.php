@@ -29,7 +29,21 @@ if ($deleteSucces) {
     </div>
 <?php
 }
-?>
+if (isset($_GET["success_msg"])) {
+    ?>
+        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+            <?php
+            if ($_GET["success_msg"] == "insert") {
+                echo "News has been inserted successfully";
+            } elseif ($_GET["success_msg"] == "update") {
+                echo "News has been updated successfully";
+            }
+            ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    }
+    ?>
 
 <div class="p-3">
     <div>
@@ -40,39 +54,43 @@ if ($deleteSucces) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table class="table table-bordered  table-hover">
-                <tr>
-                    <th>#</th>
-                    <th>News Image</th>
-                    <th>News Title</th>
-                    <th>News Detail</th>
-                    <th>Sort Order</th>
-                    <th class="text-center">Action</th>
-                </tr>
-
-
-                <?php
-                $newsObject = new News();
-                $allNews = $newsObject->fetchNews();
-                
-                $i = 0;
-                foreach ($allNews as $news) {
-                    $i++;
-                ?>
+            <table id="newsTable" class="table table-bordered  table-hover">
+                <thead>
                     <tr>
-                        <td><?php echo $i; ?></td>
-                        <td><img src="../../lib/images/news/<?php echo $news["news_image"]; ?>" alt="news Image" height="100" width="150"></td>
-                        <td><?php echo $news["news_title"]; ?></td>
-                        <td><?php echo $news["news_detail"]; ?></td>
-                        <td><?php echo $news["sort_order"]; ?></td>
-                        <td class="text-center">
-                            <span id="e<?php echo $news["news_id"]; ?>" class="cursor-pointer editBtns fas fa-pen text-primary me-2"></span>
-                            <span id="d<?php echo $news["news_id"]; ?>" class="cursor-pointer deleteBtns fas fa-trash-can text-danger ms-2"></span>
-                        </td>
+                        <th>#</th>
+                        <th>News Image</th>
+                        <th>News Title</th>
+                        <th>News Detail</th>
+                        <th>Sort Order</th>
+                        <th class="text-center">Action</th>
                     </tr>
-                <?php
-                }
-                ?>
+                </thead>
+
+                <tbody>
+
+                    <?php
+                    $newsObject = new News();
+                    $allNews = $newsObject->fetchNews();
+
+                    $i = 0;
+                    foreach ($allNews as $news) {
+                        $i++;
+                    ?>
+                        <tr>
+                            <td><?php echo $i; ?></td>
+                            <td><img src="../../lib/images/news/<?php echo $news["news_image"]; ?>" alt="news Image" height="100" width="150"></td>
+                            <td><?php echo $news["news_title"]; ?></td>
+                            <td><?php echo $news["news_detail"]; ?></td>
+                            <td><?php echo $news["sort_order"]; ?></td>
+                            <td class="text-center">
+                                <span id="e<?php echo $news["news_id"]; ?>" class="cursor-pointer editBtns fas fa-pen text-primary me-2"></span>
+                                <span id="d<?php echo $news["news_id"]; ?>" class="cursor-pointer deleteBtns fas fa-trash-can text-danger ms-2"></span>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
             </table>
         </div>
     </div>

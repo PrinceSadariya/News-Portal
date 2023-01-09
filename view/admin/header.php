@@ -37,7 +37,7 @@ if (in_array($fileName, $tabs)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../lib/css/style.css">
-
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -51,7 +51,7 @@ if (in_array($fileName, $tabs)) {
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    
+
                 </ul>
                 <div>
                     <button id="adminLogoutBtn" class="btn btn-outline-danger">Logout</button>
@@ -62,7 +62,7 @@ if (in_array($fileName, $tabs)) {
     <!-- NAVBAR END-->
 
     <div class="row g-0">
-        
+
         <!-- SIDEBAR START -->
         <div id="sidebar" class="bg-dark col-2 p-2 fixed-top">
             <div class="container rounded p-2 px-2 <?php if ($_SESSION["activeTab"] == "index.php") {
@@ -71,13 +71,13 @@ if (in_array($fileName, $tabs)) {
                 <a href="./index.php" class="text-decoration-none text-white"><span class="fs-5 nav-link side-link"> <span class="fas side-icon fa-gauge-high"></span> Dashboard</span></a>
             </div>
             <div class="container p-2 px-2 rounded <?php if ($_SESSION["activeTab"] == "manage_students.php") {
-                echo "bg-primary";
-            } ?>">
+                                                        echo "bg-primary";
+                                                    } ?>">
                 <a href=" ./manage_students.php" class="text-decoration-none text-white"><span class="fs-5 nav-link side-link"> <span class="fas side-icon fa-user-group"></span> Manage Students</span></a>
             </div>
             <div class="container p-2 px-2 rounded <?php if ($_SESSION["activeTab"] == "manage_departments.php") {
-                echo "bg-primary";
-            } ?>">
+                                                        echo "bg-primary";
+                                                    } ?>">
                 <a href=" ./manage_departments.php" class="text-decoration-none text-white"><span class="fs-5 nav-link side-link"> <span class="fas side-icon fa-list"></span> Manage Departments</span></a>
             </div>
             <div class="container p-2 px-2 rounded <?php if ($_SESSION["activeTab"] == "manage_colleges.php") {
@@ -96,8 +96,8 @@ if (in_array($fileName, $tabs)) {
                 <a href=" ./manage_banners.php" class="text-decoration-none text-white"><span class="fs-5 nav-link side-link"> <span class="fas side-icon fa-images"></span> Manage Banners</span></a>
             </div>
             <div class="container p-2 px-2 rounded <?php if ($_SESSION["activeTab"] == "manage_news.php") {
-                echo "bg-primary";
-            } ?>">
+                                                        echo "bg-primary";
+                                                    } ?>">
                 <a href=" ./manage_news.php" class="text-decoration-none text-white"><span class="fs-5 nav-link side-link"> <span class="fas side-icon fa-newspaper"></span> Manage News</span></a>
             </div>
         </div>

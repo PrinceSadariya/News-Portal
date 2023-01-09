@@ -39,7 +39,7 @@ if (trim($_POST["newsTitle"]) != '' || $_POST["newsDetail"] != '') {
 
                     // move_uploaded_file($tmpName, "../../lib/images/news/" . $newsImage);
 
-                    echo "news inserted successfully";
+                    echo "News inserted successfully";
                 } else {
                     echo "Error in inserting data";
                 }
@@ -91,7 +91,7 @@ if (trim($_POST["newsTitle"]) != '' || $_POST["newsDetail"] != '') {
                         unlink("../../lib/images/news/" . $oldNewsImage);
                         // move_uploaded_file($tmpName, "../../lib/images/news/" . $newsImage);
 
-                        echo "news updated successfully";
+                        echo "News updated successfully";
                     } else {
                         echo "Error in updating data";
                     }
@@ -108,7 +108,7 @@ if (trim($_POST["newsTitle"]) != '' || $_POST["newsDetail"] != '') {
             $updated = $newsObject->updateNews($_POST["newsId"]);
 
             if ($updated) {
-                echo "news updated successfully";
+                echo "News updated successfully";
             } else {
                 echo "Error in updating data";
             }

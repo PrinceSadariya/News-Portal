@@ -21,6 +21,20 @@ if ($deleteSucces) {
     </div>
 <?php
 }
+if (isset($_GET["success_msg"])) {
+?>
+    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+        <?php
+        if ($_GET["success_msg"] == "insert") {
+            echo "University has been inserted successfully";
+        } elseif ($_GET["success_msg"] == "update") {
+            echo "University has been updated successfully";
+        }
+        ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+}
 ?>
 
 <div class="p-3">
@@ -32,37 +46,40 @@ if ($deleteSucces) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <tr>
-                    <th>#</th>
-                    <th>University ID</th>
-                    <th>University Name</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th class="text-center">Action</th>
-                </tr>
-
-                <?php
-                $universityObject = new University();
-                $universityData = $universityObject->fetchUniversities();
-                $i = 0;
-                foreach ($universityData as $university) {
-                    $i++;
-                ?>
+            <table id="universityTable" class="table table-bordered table-hover">
+                <thead>
                     <tr>
-                        <td><?php echo $i; ?></td>
-                        <td class="text-primary"><?php echo $university['university_id']; ?></td>
-                        <td><?php echo $university['university_name']; ?></td>
-                        <td><?php echo $university['university_city']; ?></td>
-                        <td><?php echo $university['university_state']; ?></td>
-                        <td class="text-center">
-                            <span id="e<?php echo $university["university_id"]; ?>" class="cursor-pointer editBtns fas fa-pen text-primary me-2"></span>
-                            <span id="d<?php echo $university["university_id"]; ?>" class="cursor-pointer deleteBtns fas fa-trash-can text-danger ms-2"></span>
-                        </td>
+                        <th>#</th>
+                        <th>University ID</th>
+                        <th>University Name</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th class="text-center">Action</th>
                     </tr>
-                <?php
-                }
-                ?>
+                </thead>
+                <tbody>
+                    <?php
+                    $universityObject = new University();
+                    $universityData = $universityObject->fetchUniversities();
+                    $i = 0;
+                    foreach ($universityData as $university) {
+                        $i++;
+                    ?>
+                        <tr>
+                            <td><?php echo $i; ?></td>
+                            <td class="text-primary"><?php echo $university['university_id']; ?></td>
+                            <td><?php echo $university['university_name']; ?></td>
+                            <td><?php echo $university['university_city']; ?></td>
+                            <td><?php echo $university['university_state']; ?></td>
+                            <td class="text-center">
+                                <span id="e<?php echo $university["university_id"]; ?>" class="cursor-pointer editBtns fas fa-pen text-primary me-2"></span>
+                                <span id="d<?php echo $university["university_id"]; ?>" class="cursor-pointer deleteBtns fas fa-trash-can text-danger ms-2"></span>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
             </table>
         </div>
     </div>

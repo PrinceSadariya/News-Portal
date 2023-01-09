@@ -46,7 +46,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/model/Constant.php';
                             <div id="userEmailErr" class="form-text text-danger"></div>
                         </div>
                         <div class="mt-2">
-                            <input type="text" name="userPassword" id="userPassword" class="form-control" placeholder="Enter your password">
+                            <input type="password" name="userPassword" id="userPassword" class="form-control" placeholder="Enter your password">
                             <div id="userPasswordErr" class="form-text text-danger"></div>
                         </div>
                         <div class="mt-4 text-center">

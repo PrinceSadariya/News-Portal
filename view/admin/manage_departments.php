@@ -21,6 +21,21 @@ if ($deleteSucces) {
     </div>
 <?php
 }
+
+if (isset($_GET["success_msg"])) {
+?>
+    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+        <?php
+        if ($_GET["success_msg"] == "insert") {
+            echo "Department has been inserted successfully";
+        } elseif ($_GET["success_msg"] == "update") {
+            echo "Department has been updated successfully";
+        }
+        ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+}
 ?>
 
 <div class="p-3">
@@ -32,39 +47,44 @@ if ($deleteSucces) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table class="table table-bordered  table-hover">
-                <tr>
-                    <th>#</th>
-                    <th>Department ID</th>
-                    <th>Department Name</th>
-                    <th class="text-center">Action</th>
-                </tr>
-
-                <?php
-                $departmentObject = new Department();
-                $departmentData = $departmentObject->fetchDepartments();
-                $i = 0;
-                foreach ($departmentData as $department) {
-                    $i++;
-                ?>
+            <table id="departmentTable" class="table table-bordered  table-hover">
+                <thead>
                     <tr>
-                        <td><?php echo $i; ?></td>
-                        <td class="text-primary"><?php echo $department['department_id']; ?></td>
-                        <td><?php echo $department['department_name']; ?></td>
-                        <td class="text-center">
-                            <span id="e<?php echo $department["department_id"]; ?>" class="cursor-pointer editBtns fas fa-pen text-primary me-2"></span>
-                            <span id="d<?php echo $department["department_id"]; ?>" class="cursor-pointer deleteBtns fas fa-trash-can text-danger ms-2"></span>
-                        </td>
+                        <th>#</th>
+                        <th>Department ID</th>
+                        <th>Department Name</th>
+                        <th class="text-center">Action</th>
                     </tr>
-                <?php
-                }
-                ?>
+                </thead>
+                <tbody>
 
+                    <?php
+                    $departmentObject = new Department();
+                    $departmentData = $departmentObject->fetchDepartments();
+                    $i = 0;
+                    foreach ($departmentData as $department) {
+                        $i++;
+                    ?>
+                        <tr>
+                            <td><?php echo $i; ?></td>
+                            <td class="text-primary"><?php echo $department['department_id']; ?></td>
+                            <td><?php echo $department['department_name']; ?></td>
+                            <td class="text-center">
+                                <span id="e<?php echo $department["department_id"]; ?>" class="cursor-pointer editBtns fas fa-pen text-primary me-2"></span>
+                                <span id="d<?php echo $department["department_id"]; ?>" class="cursor-pointer deleteBtns fas fa-trash-can text-danger ms-2"></span>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+
+                </tbody>
 
             </table>
         </div>
     </div>
 </div>
+
 
 <script src="../../lib/js/manage_departments.js"></script>
 

@@ -78,7 +78,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                         </div>
                         <div class="mb-3">
                             <label for="userPassword" class="form-label">Password</label>
-                            <input type="text" name="userPassword" id="userPassword" class="form-control">
+                            <input type="password" name="userPassword" id="userPassword" class="form-control">
                             <div id="userPasswordErr" class="form-text text-danger"></div>
                         </div>
                         <div class="mt-3 text-center">
