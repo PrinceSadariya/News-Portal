@@ -1,0 +1,83 @@
+#sidebar {
+    min-height: 100vh;
+    opacity: 0.99;
+    margin-top: 72px;
+}
+#main-container {
+    padding-left: 17vw;
+}
+
+.bg-gradiant {
+    min-height: 92.7vh;
+    background-image: linear-gradient(
+        to right,
+        rgb(121, 121, 247),
+        rgb(245, 136, 245)
+    );
+}
+
+#login-container {
+    min-height: 75vh;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.side-link {
+    font-size: 17px !important;
+}
+
+.side-icon {
+    font-size: 23px !important;
+    width: 30px !important;
+}
+
+#student-container {
+    padding-left: 0 !important;
+    background-image: url(../images/school-bg.jpg) !important;
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#edit-container {
+    padding-left: 0 !important;
+    background-image: url(../images/school-bg.jpg) !important;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#login-box {
+    background-color: rgba(32, 30, 30, 0.867) !important;
+    min-width: 400px !important;
+}
+#edit-box {
+    background-color: rgba(32, 30, 30, 0.867) !important;
+    max-width: 600px !important;
+}
+
+.height-100vh {
+    min-height: 100vh !important;
+}
+
+footer {
+    position: sticky !important;
+    top: 100% !important;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+#profile-dark-back {
+    height: 150px;
+}
+
+#studentDP {
+    margin-top: -80px;
+}
+
+.modal-body {
+    min-height: 400px !important;
+}
