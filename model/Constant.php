@@ -1,5 +1,5 @@
 <script>
-    const SITE_URL = "http://student_management_system.prince.sadariya.radixusers2.com/";
+    const SITE_URL = "WRITE_HERE_YOUR_SERVER_PATH";
 </script>
 <?php
-define("SITE_URL", "http://student_management_system.prince.sadariya.radixusers2.com/");
+define("SITE_URL", "WRITE_HERE_YOUR_SERVER_PATH");
