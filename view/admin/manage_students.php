@@ -62,7 +62,7 @@ if (isset($_GET["profile"]) && $_GET["profile"] == "change") {
 ?>
 
 <!-- MODAL FOR PROFILE IMAGE -->
-<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="profileModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -82,7 +82,7 @@ if (isset($_GET["profile"]) && $_GET["profile"] == "change") {
                 </div>
                 <div class="mt-1 text-end">
                     <button id="changeProfileBtn" type="submit" class="btn btn-success">Change</button>
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Back</button>
+                    <button id="modalBackBtn" type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Back</button>
                     </form>
                 </div>
             </div>

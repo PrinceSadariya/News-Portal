@@ -4,8 +4,6 @@ require './header.php';
 if (isset($_GET["student_id"])) {
     $studentId = $_GET["student_id"];
 
-    $crudObject = new CRUD();
-
     $studentData = fetchStudentData($studentId);
 
     $userName = $studentData[0]["user_name"];
