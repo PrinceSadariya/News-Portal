@@ -1,10 +1,10 @@
 <?php
 
 class Database{
-    private $serverName = "localhost";
-    private $userName = "prince_sadariya";
-    private $password = "deep70";
-    private $dbName = "prince_sadariya1";
+    private $serverName = "";
+    private $userName = "";
+    private $password = "";
+    private $dbName = "";
 
     protected function connect(){
         $conn = new mysqli($this->serverName,$this->userName,$this->password,$this->dbName);
