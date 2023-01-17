@@ -2,7 +2,13 @@
 
 require_once 'CRUD.php';
 
-//FOR STUDENT DATA WITH ALL FOREIGN KEY DATA
+/**
+ * fetch the data from the students table
+ * 
+ * @param number $studentId studentId of student which you want to fetch data
+ * 
+ * @return array array of studentData based on condition 
+ */
 function fetchStudentData($studentId)
 {
     $crudObject = new CRUD();
@@ -14,7 +20,11 @@ function fetchStudentData($studentId)
     return $studentData;
 }
 
-//FOR DEPARTMENT DATA WITH ORDER BY NAME
+/**
+ * fetch department data with order by department_name
+ * 
+ * @return array array of all department with order by department_name
+ */
 function fetchDepartmentData()
 {
     $crudObject = new CRUD();
@@ -26,7 +36,11 @@ function fetchDepartmentData()
     return $departmentData;
 }
 
-//FOR COLLEGE DATA WITH ORDER BY NAME
+/**
+ * fetch college data with order by college_name
+ * 
+ * @return array array of all college with order by college_name
+ */
 function fetchCollegeData()
 {
     $crudObject = new CRUD();
@@ -38,7 +52,12 @@ function fetchCollegeData()
     return $collegeData;
 }
 
-//FOR COLLEGE DATA WITH ORDER BY NAME
+
+/**
+ * fetch universities data with order by university_name
+ * 
+ * @return array array of all university with order by university_name
+ */
 function fetchUniversityData()
 {
     $crudObject = new CRUD();
