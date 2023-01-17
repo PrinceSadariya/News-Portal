@@ -88,9 +88,9 @@ if (!empty($userName) && !empty($firstName) && !empty($lastName) && !empty($midd
                                 imagecopyresized($mImage, $sorceFile, 0, 0, 0, 0, $mWidth, $mHeight, $uplodWidth, $uplodHeight);
                                 imagecopyresized($lImage, $sorceFile, 0, 0, 0, 0, $lWidth, $lHeight, $uplodWidth, $uplodHeight);
 
-                                imagejpeg($sImage, "../../lib/images/student_profile/small/" . $profilePictureName);
-                                imagejpeg($mImage, "../../lib/images/student_profile/medium/" . $profilePictureName);
-                                imagejpeg($lImage, "../../lib/images/student_profile/large/" . $profilePictureName);
+                                imagejpeg($sImage, "../../lib/images/student_profile/small/" . $profilePictureName, 100);
+                                imagejpeg($mImage, "../../lib/images/student_profile/medium/" . $profilePictureName, 100);
+                                imagejpeg($lImage, "../../lib/images/student_profile/large/" . $profilePictureName, 100);
                                 // move_uploaded_file($profileTmpName, "../../lib/images/student_profile/" . $profilePictureName);
 
                                 //SESSION SET FOR LOGIN

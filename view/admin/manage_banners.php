@@ -45,11 +45,14 @@ if (isset($_GET["success_msg"])) {
             echo "Banner has been updated successfully";
         }
         ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php
 }
 ?>
+
+<div id="statusMsg" class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+    <!-- MESSAGE SHOWING FOR STATUS CHANGING FROM STATUS SWITCH -->
+</div>
 
 <div class="p-3">
     <div>
@@ -62,7 +65,7 @@ if (isset($_GET["success_msg"])) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table id="bannerTable" class="table table-bordered table-hover">
+            <table id="bannerTable" class="cell-border order-column hover">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -103,7 +106,8 @@ if (isset($_GET["success_msg"])) {
                             <td><?php echo $i; ?></td>
                             <td><img src="../../lib/images/banner/<?php echo $banner["banner_image"]; ?>" alt="Banner Image" height="100" width="150"></td>
                             <td><?php echo $banner["banner_title"]; ?></td>
-                            <td><?php echo $switchBtn ?></td>
+                            <td><?php echo $switchBtn ?>
+                            </td>
 
                             <td class="text-center">
                                 <span id="e<?php echo $banner["banner_id"]; ?>" class="<?php echo $actionClass; ?> editBtns fas fa-pen text-primary me-2"></span>

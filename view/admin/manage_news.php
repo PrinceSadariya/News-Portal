@@ -54,7 +54,7 @@ if (isset($_GET["success_msg"])) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table id="newsTable" class="table table-bordered  table-hover">
+            <table id="newsTable" class="cell-border order-column hover">
                 <thead>
                     <tr>
                         <th>#</th>

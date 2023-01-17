@@ -35,7 +35,7 @@ if (trim($_POST["newsTitle"]) != '' || $_POST["newsDetail"] != '') {
 
                     imagecopyresized($sImage, $sorceFile, 0, 0, 0, 0, $sWidth, $sHeight, $uplodWidth, $uplodHeight);
 
-                    imagejpeg($sImage, "../../lib/images/news/" . $newsImage);
+                    imagejpeg($sImage, "../../lib/images/news/" . $newsImage,100);
 
                     // move_uploaded_file($tmpName, "../../lib/images/news/" . $newsImage);
 
@@ -86,7 +86,7 @@ if (trim($_POST["newsTitle"]) != '' || $_POST["newsDetail"] != '') {
 
                         imagecopyresized($sImage, $sorceFile, 0, 0, 0, 0, $sWidth, $sHeight, $uplodWidth, $uplodHeight);
 
-                        imagejpeg($sImage, "../../lib/images/news/" . $newsImage);
+                        imagejpeg($sImage, "../../lib/images/news/" . $newsImage,100);
 
                         unlink("../../lib/images/news/" . $oldNewsImage);
                         // move_uploaded_file($tmpName, "../../lib/images/news/" . $newsImage);

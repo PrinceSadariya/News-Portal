@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require '../../model/Constant.php';
+require '../../controller/user_defined_functions.php';
 
 //CHECKING FOR LOGIN
 session_start();
@@ -31,23 +32,11 @@ $crudObject = new CRUD();
 
 $studentId = $_SESSION["student_id"];
 
-$studentData = $crudObject->fetchDataSql("SELECT * FROM students JOIN departments ON students.department = departments.department_id JOIN colleges ON students.college = colleges.college_id JOIN universities ON students.university = universities.university_id WHERE student_id=$studentId");
+$studentData = fetchStudentData($studentId);
 
-$userName = $studentData[0]["user_name"];
+//FIRSTNAME AND LASTNAME FOR SHOWING IN HEADER
 $firstName = $studentData[0]["first_name"];
 $lastName = $studentData[0]["last_name"];
-$middleName = $studentData[0]["middle_name"];
-$gender = $studentData[0]["gender"];
-$password = $studentData[0]["user_password"];
-$studentProfilePicture = $studentData[0]["profile_picture"];
-$email = $studentData[0]["email"];
-$mobile = $studentData[0]["mobile"];
-$college = $studentData[0]["college_name"];
-$collegeId = $studentData[0]["college_id"];
-$department = $studentData[0]["department_name"];
-$departmentId = $studentData[0]["department_id"];
-$university = $studentData[0]["university_name"];
-$universityId = $studentData[0]["university_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">

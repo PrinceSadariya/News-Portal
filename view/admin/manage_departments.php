@@ -7,8 +7,17 @@ $deleteSucces = false;
 if (isset($_GET["department_id"])) {
     $deleteId = $_GET["department_id"];
 
-    $departmentObject = new Department();
-    $deleteSucces = $departmentObject->deleteDepartment($deleteId);
+    $studentObject = new Student();
+    $studentData = $studentObject->fetchStudents('*', ["department" => $deleteId]);
+
+    if (empty($studentData)) {
+        $departmentObject = new Department();
+        $deleteSucces = $departmentObject->deleteDepartment($deleteId);
+        $deleteMsg = "Department has been deleted";
+    } else {
+        $deleteMsg = "Operation not permitted, because this department assigned under student's data";
+        $deleteSucces = true;
+    }
 }
 ?>
 
@@ -16,7 +25,7 @@ if (isset($_GET["department_id"])) {
 if ($deleteSucces) {
 ?>
     <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-        Department has been deleted
+        <?php echo $deleteMsg; ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php
@@ -47,7 +56,7 @@ if (isset($_GET["success_msg"])) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table id="departmentTable" class="table table-bordered  table-hover">
+            <table id="departmentTable" class="cell-border order-column hover">
                 <thead>
                     <tr>
                         <th>#</th>

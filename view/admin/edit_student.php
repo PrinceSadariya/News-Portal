@@ -6,7 +6,7 @@ if (isset($_GET["student_id"])) {
 
     $crudObject = new CRUD();
 
-    $studentData = $crudObject->fetchDataSql("SELECT * FROM students JOIN departments ON students.department = departments.department_id JOIN colleges ON students.college = colleges.college_id JOIN universities ON students.university = universities.university_id WHERE student_id=$studentId");
+    $studentData = fetchStudentData($studentId);
 
     $userName = $studentData[0]["user_name"];
     $firstName = $studentData[0]["first_name"];
@@ -23,11 +23,10 @@ if (isset($_GET["student_id"])) {
     $university = $studentData[0]["university_name"];
     $universityId = $studentData[0]["university_id"];
 
-
     //FOR DEPARTMENT SELECT TAG
-    $departmentData = $crudObject->fetchDataSql('SELECT * FROM departments ORDER BY department_name');
-
     $departmentSelect = null;
+
+    $departmentData = fetchDepartmentData();
     foreach ($departmentData as $department) {
         if ($department["department_id"] == $departmentId) {
             $departmentSelect .= "<option value='" . $department["department_id"] . "' selected>" . $department["department_name"] . "</option>";
@@ -39,7 +38,7 @@ if (isset($_GET["student_id"])) {
     //FOR COLLEGE SELECT TAG
     $collegeSelect = null;
 
-    $collegeData = $crudObject->fetchDataSql('SELECT * FROM colleges ORDER BY college_name');
+    $collegeData = fetchCollegeData();
     foreach ($collegeData as $college) {
         if ($college["college_id"] == $collegeId) {
             $collegeSelect .= "<option value='" . $college["college_id"] . "' selected>" . $college["college_name"] . "</option>";
@@ -51,7 +50,7 @@ if (isset($_GET["student_id"])) {
     //FOR UNIVERSITY SELECT TAG
     $universitySelect = null;
 
-    $universityData = $crudObject->fetchDataSql('SELECT * FROM universities ORDER BY university_name');
+    $universityData = fetchUniversityData();
     foreach ($universityData as $university) {
         if ($university["university_id"] == $universityId) {
             $universitySelect .= "<option value='" . $university["university_id"] . "' selected>" . $university["university_name"] . "</option>";
@@ -63,9 +62,8 @@ if (isset($_GET["student_id"])) {
 ?>
 
 <div class="p-3">
-    <!-- FOR MESSAGE SHOWING -->
     <div id="resultMessage" class="alert alert-warning">
-
+        <!-- FOR MESSAGE SHOWING -->
     </div>
 
     <div>

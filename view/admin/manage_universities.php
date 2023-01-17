@@ -7,8 +7,17 @@ $deleteSucces = false;
 if (isset($_GET["university_id"])) {
     $deleteId = $_GET["university_id"];
 
-    $universityObject = new University();
-    $deleteSucces = $universityObject->deleteUniversity($deleteId);
+    $studentObject = new Student();
+    $studentData = $studentObject->fetchStudents('*', ["university" => $deleteId]);
+
+    if (empty($studentData)) {
+        $universityObject = new University();
+        $deleteSucces = $universityObject->deleteUniversity($deleteId);
+        $deleteMsg = "University has been deleted";
+    } else {
+        $deleteMsg = "Operation not permitted, because this university assigned under student's data";
+        $deleteSucces = true;
+    }
 }
 ?>
 
@@ -16,7 +25,7 @@ if (isset($_GET["university_id"])) {
 if ($deleteSucces) {
 ?>
     <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-        University has been deleted
+        <?php echo $deleteMsg; ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php
@@ -46,7 +55,7 @@ if (isset($_GET["success_msg"])) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table id="universityTable" class="table table-bordered table-hover">
+            <table id="universityTable" class="cell-border order-column hover">
                 <thead>
                     <tr>
                         <th>#</th>

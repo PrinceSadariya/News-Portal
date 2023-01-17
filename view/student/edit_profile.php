@@ -1,11 +1,25 @@
 <?php
 require './header.php';
 
+//OLD DATA RETRIVING
+$userName = $studentData[0]["user_name"];
+$middleName = $studentData[0]["middle_name"];
+$gender = $studentData[0]["gender"];
+$password = $studentData[0]["user_password"];
+$studentProfilePicture = $studentData[0]["profile_picture"];
+$email = $studentData[0]["email"];
+$mobile = $studentData[0]["mobile"];
+$college = $studentData[0]["college_name"];
+$collegeId = $studentData[0]["college_id"];
+$department = $studentData[0]["department_name"];
+$departmentId = $studentData[0]["department_id"];
+$university = $studentData[0]["university_name"];
+$universityId = $studentData[0]["university_id"];
 
 $crudObject = new CRUD();
 
 //RETRIVING VALUE FOR DEPARTMENT SELECT TAG
-$departmentData = $crudObject->fetchDataSql('SELECT * FROM departments ORDER BY department_name');
+$departmentData = fetchDepartmentData();
 
 $departmentSelect = null;
 foreach ($departmentData as $department) {
@@ -19,7 +33,7 @@ foreach ($departmentData as $department) {
 //RETRIVING VALUE FOR COLLEGE SELECT TAG
 $collegeSelect = null;
 
-$collegeData = $crudObject->fetchDataSql('SELECT * FROM colleges ORDER BY college_name');
+$collegeData = fetchCollegeData();
 foreach ($collegeData as $college) {
     if ($college["college_id"] == $collegeId) {
         $collegeSelect .= "<option value='" . $college["college_id"] . "' selected>" . $college["college_name"] . "</option>";
@@ -31,7 +45,7 @@ foreach ($collegeData as $college) {
 //RETRIVING VALUE FOR UNIVERSITY SELECT TAG
 $universitySelect = null;
 
-$universityData = $crudObject->fetchDataSql('SELECT * FROM universities ORDER BY university_name');
+$universityData = fetchUniversityData();
 foreach ($universityData as $university) {
     if ($university["university_id"] == $universityId) {
         $universitySelect .= "<option value='" . $university["university_id"] . "' selected>" . $university["university_name"] . "</option>";
@@ -75,12 +89,12 @@ foreach ($universityData as $university) {
                     <div class="mt-3">
                         <label for="gender">Gender : </label>
                         <input type="radio" name="gender" id="gMale" value="1" class="form-check-input" <?php if ($gender == "1") {
-                                                                                                    echo "checked";
-                                                                                                } ?>>
+                                                                                                            echo "checked";
+                                                                                                        } ?>>
                         <label for="gMale" class="form-check-label">Male</label>
                         <input type="radio" name="gender" id="gFeale" value="2" class="form-check-input" <?php if ($gender == "2") {
-                                                                                                    echo "checked";
-                                                                                                } ?>>
+                                                                                                                echo "checked";
+                                                                                                            } ?>>
                         <label for="gFeale" class="form-check-label">Female</label>
                         <div id="genderErr" class="form-text text-danger"></div>
                     </div>

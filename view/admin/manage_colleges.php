@@ -7,8 +7,17 @@ $deleteSucces = false;
 if (isset($_GET["college_id"])) {
     $deleteId = $_GET["college_id"];
 
-    $collegeObject = new College();
-    $deleteSucces = $collegeObject->deleteCollege($deleteId);
+    $studentObject = new Student();
+    $studentData = $studentObject->fetchStudents('*', ["college" => $deleteId]);
+
+    if (empty($studentData)) {
+        $collegeObject = new College();
+        $deleteSucces = $collegeObject->deleteCollege($deleteId);
+        $deleteMsg = "College has been deleted";
+    } else {
+        $deleteMsg = "Operation not permitted, because this college assigned under student's data";
+        $deleteSucces = true;
+    }
 }
 ?>
 
@@ -16,26 +25,26 @@ if (isset($_GET["college_id"])) {
 if ($deleteSucces) {
 ?>
     <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-        College has been deleted
+        <?php echo $deleteMsg; ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php
 }
 if (isset($_GET["success_msg"])) {
-    ?>
-        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
-            <?php
-            if ($_GET["success_msg"] == "insert") {
-                echo "College has been inserted successfully";
-            } elseif ($_GET["success_msg"] == "update") {
-                echo "College has been updated successfully";
-            }
-            ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php
-    }
-    ?>
+?>
+    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+        <?php
+        if ($_GET["success_msg"] == "insert") {
+            echo "College has been inserted successfully";
+        } elseif ($_GET["success_msg"] == "update") {
+            echo "College has been updated successfully";
+        }
+        ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+}
+?>
 
 <div class="p-3">
     <div>
@@ -46,7 +55,7 @@ if (isset($_GET["success_msg"])) {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table id="collegeTable" class="table table-bordered table-hover">
+            <table id="collegeTable" class="cell-border order-column hover">
                 <thead>
                     <tr>
                         <th>#</th>

@@ -1,5 +1,20 @@
 <?php
 require './header.php';
+
+//OLD DATA RETRIVING
+$userName = $studentData[0]["user_name"];
+$middleName = $studentData[0]["middle_name"];
+$gender = $studentData[0]["gender"];
+$password = $studentData[0]["user_password"];
+$studentProfilePicture = $studentData[0]["profile_picture"];
+$email = $studentData[0]["email"];
+$mobile = $studentData[0]["mobile"];
+$college = $studentData[0]["college_name"];
+$collegeId = $studentData[0]["college_id"];
+$department = $studentData[0]["department_name"];
+$departmentId = $studentData[0]["department_id"];
+$university = $studentData[0]["university_name"];
+$universityId = $studentData[0]["university_id"];
 ?>
 <div class="container px-0 bg-light my-2">
 

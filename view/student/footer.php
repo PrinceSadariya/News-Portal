@@ -4,12 +4,8 @@
             <div class="col-md-3 text-center">
                 <div>
                     <a href="./index.php" class="text-light text-decoration-none">
-                        <div>
-                            <span style="font-size: 100px;" class="fas fa-user-graduate text-light"></span>
-                        </div>
-                        <div>
-                            <p class="fs-2 my-0">Student Portal</p>
-                        </div>
+                        <span style="font-size: 100px;" class="fas fa-user-graduate text-light"></span>
+                        <p class="fs-2 my-0">Student Portal</p>
                     </a>
                 </div>
                 <div>
@@ -87,7 +83,7 @@
                 <div>
                     <div>
                         <div>
-                            <p class="fw-bold text-decoration-underline">Community</p>
+                            <p class="fw-bold text-decoration-underline">COMMUNITY</p>
                         </div>
                     </div>
                     <div>

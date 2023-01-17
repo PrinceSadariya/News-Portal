@@ -7,6 +7,13 @@ if (isset($_POST["statusSwitch"]) && $_POST["statusSwitch"] == "change") {
     $crudObject = new CRUD();
 
     $updated = $crudObject->updateData('banners', ["banner_status" => $_POST["status"]], ["banner_id" => $_POST["bannerId"]]);
+
+    if ($updated) {
+        echo "Banner status has been changed";
+    } else {
+        echo "Something went wrong please try again";
+    }
+    exit;
 }
 
 //FOR INSERTION AND UPDATION
@@ -45,7 +52,7 @@ if (trim($_POST["bannerTitle"]) != '' || $_POST["bannerStatus"] != '') {
 
                     imagecopyresized($sImage, $sorceFile, 0, 0, 0, 0, $sWidth, $sHeight, $uplodWidth, $uplodHeight);
 
-                    imagejpeg($sImage, "../../lib/images/banner/" . $bannerImage);
+                    imagejpeg($sImage, "../../lib/images/banner/" . $bannerImage ,100);
 
                     // move_uploaded_file($tmpName, "../../lib/images/banner/" . $bannerImage);
 
@@ -98,7 +105,7 @@ if (trim($_POST["bannerTitle"]) != '' || $_POST["bannerStatus"] != '') {
 
                         imagecopyresized($sImage, $sorceFile, 0, 0, 0, 0, $sWidth, $sHeight, $uplodWidth, $uplodHeight);
 
-                        imagejpeg($sImage, "../../lib/images/banner/" . $bannerImage);
+                        imagejpeg($sImage, "../../lib/images/banner/" . $bannerImage,100);
 
                         unlink("../../lib/images/banner/" . $oldBannerImage);
                         // move_uploaded_file($tmpName, "../../lib/images/banner/" . $bannerImage);

@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require '../../model/Constant.php';
+require '../../controller/user_defined_functions.php';
 
 //CLASS AUTOLOADER
 spl_autoload_register(function ($class_name) {
@@ -12,7 +13,7 @@ spl_autoload_register(function ($class_name) {
 
 //CHECKING FOR LOGIN
 session_start();
-if (!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true) {
+if (!isset($_SESSION["loggedin"]) || !$_SESSION["loggedin"] === true) {
     header("Location: " . SITE_URL . "view/admin/login.php?access_msg=true");
 }
 

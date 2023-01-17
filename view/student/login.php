@@ -1,5 +1,10 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . '/model/Constant.php';
+
+session_start();
+if (isset($_SESSION["studentloggedin"]) && $_SESSION["studentloggedin"] === true) {
+    header("Location: " . SITE_URL . "view/student/index.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,7 +44,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/model/Constant.php';
                     <div class="px-2">
                         <div id="errorMsg" class="alert alert-danger" role="alert"></div>
                     </div>
-                    
+
                     <form id="studentLoginForm" method="POST" class="p-3">
                         <div class="mt-2">
                             <input type="text" name="userEmail" id="userEmail" class="form-control" placeholder="Enter Email">

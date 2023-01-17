@@ -97,7 +97,7 @@ if (isset($_GET["profile"]) && $_GET["profile"] == "change") {
     </div>
     <div class="mt-4">
         <div class="table-responsive">
-            <table id="studentTable" class="table table-bordered table-hover">
+            <table id="studentTable" class="cell-border order-column hover">
                 <thead>
                     <tr>
                         <th>#</th>
