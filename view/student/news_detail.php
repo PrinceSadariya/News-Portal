@@ -1,5 +1,10 @@
 <?php
+
 require './header.php';
+
+if (!isset($_GET["news_id"])) {
+    header("Location: " . SITE_URL . "view/student/latest_news.php");
+}
 
 require_once $_SERVER["DOCUMENT_ROOT"] . '/controller/News.php';
 
