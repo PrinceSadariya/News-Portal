@@ -3,9 +3,9 @@
 require_once 'CRUD.php';
 
 /**
- * fetch the data from the students table
+ * fetch the data of students from the students table
  * 
- * @param number $studentId studentId of student which you want to fetch data
+ * @param number $studentId by default studentId is null , if you pass studentId then it will return data of student whos student_id is studentId
  * 
  * @return array array of studentData based on condition 
  */

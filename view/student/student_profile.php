@@ -18,12 +18,32 @@ $universityId = $studentData[0]["university_id"];
 ?>
 <div class="container px-0 bg-light my-2">
 
-    <!-- FOR PROFILE CHANGE SUCCESS MESSAGE SHOWING  -->
     <?php
+    // FOR PROFILE CHANGE SUCCESS MESSAGE SHOWING 
     if (isset($_GET["profile"]) && $_GET["profile"] == "change") {
     ?>
         <div id="resultMsg" class="alert alert-success alert-dismissible fade show" role="alert">
             Your profile picture has been changed
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    }
+
+    //FOR PROFILE DETAIL UPDATE
+    if (isset($_GET["profile_update"]) && $_GET["profile_update"] == "true") {
+    ?>
+        <div id="resultMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+            Your profile has been updated
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    }
+
+    //FOR PASSWORD UPDATE 
+    if (isset($_GET["password_update"]) && $_GET["password_update"] == "true") {
+    ?>
+        <div id="resultMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+            Your password has been changed
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php
