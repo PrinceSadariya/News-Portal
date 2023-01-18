@@ -7,7 +7,7 @@ extract($_POST);
 if (!empty($userEmail) && !empty($userPassword)) {
     $studentObject = new Student();
 
-    $studentData = $studentObject->fetchStudents('*', ["email" => $userEmail]);
+    $studentData = $studentObject->fetchStudents('student_id,user_password', ["email" => $userEmail]);
 
     if (!empty($studentData)) {
         if ($studentData[0]["user_password"] == $userPassword) {

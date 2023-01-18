@@ -8,7 +8,7 @@ if (isset($_GET["news_id"])) {
     $deleteId = $_GET["news_id"];
 
     $newsObject = new News();
-    $newsData = $newsObject->fetchNews('*', ["news_id" => $deleteId]);
+    $newsData = $newsObject->fetchNews('news_image', ["news_id" => $deleteId]);
 
     $newsImage = $newsData[0]["news_image"];
 

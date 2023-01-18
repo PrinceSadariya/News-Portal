@@ -9,7 +9,7 @@ $crudObject = new CRUD();
 $studentObject = new Student();
 
 //RETRIVING OLD DATA OF STUDENT
-$studentData = $studentObject->fetchStudents('*', ["student_id" => $studentId]);
+$studentData = $studentObject->fetchStudents('profile_picture', ["student_id" => $studentId]);
 $oldProfileImage = $studentData[0]["profile_picture"];
 
 //IMAGE HANDLING
@@ -26,10 +26,6 @@ if (in_array($imageExtension, $validExtensions)) {
 
         $updated = $crudObject->updateData('students', ["profile_picture" => $profilePictureName], ["student_id" => $studentId]);
         if ($updated) {
-            $studentData = $studentObject->fetchStudents('*', ["email" => $email]);
-
-            $studentId = $studentData[0]["student_id"];
-
             list($uplodWidth, $uplodHeight) = getimagesize($profileTmpName);
 
             //FOR SMALL IMAGE

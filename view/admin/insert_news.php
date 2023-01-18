@@ -13,7 +13,7 @@ if (isset($_GET["news_id"])) {
 
     $newsObject = new News();
 
-    $newsData = $newsObject->fetchNews('*', ["news_id" => $newsId]);
+    $newsData = $newsObject->fetchNews('news_image,news_title,news_detail,sort_order', ["news_id" => $newsId]);
 
     $newsImage = $newsData[0]["news_image"];
     $newsTitle = $newsData[0]["news_title"];

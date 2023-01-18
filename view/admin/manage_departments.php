@@ -8,7 +8,7 @@ if (isset($_GET["department_id"])) {
     $deleteId = $_GET["department_id"];
 
     $studentObject = new Student();
-    $studentData = $studentObject->fetchStudents('*', ["department" => $deleteId]);
+    $studentData = $studentObject->fetchStudents('student_id', ["department" => $deleteId]);
 
     if (empty($studentData)) {
         $departmentObject = new Department();
@@ -67,26 +67,7 @@ if (isset($_GET["success_msg"])) {
                 </thead>
                 <tbody>
 
-                    <?php
-                    $departmentObject = new Department();
-                    $departmentData = $departmentObject->fetchDepartments();
-                    $i = 0;
-                    foreach ($departmentData as $department) {
-                        $i++;
-                    ?>
-                        <tr>
-                            <td><?php echo $i; ?></td>
-                            <td class="text-primary"><?php echo $department['department_id']; ?></td>
-                            <td><?php echo $department['department_name']; ?></td>
-                            <td class="text-center">
-                                <span id="e<?php echo $department["department_id"]; ?>" class="cursor-pointer editBtns fas fa-pen text-primary me-2"></span>
-                                <span id="d<?php echo $department["department_id"]; ?>" class="cursor-pointer deleteBtns fas fa-trash-can text-danger ms-2"></span>
-                            </td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-
+                  
                 </tbody>
 
             </table>

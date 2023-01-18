@@ -1,11 +1,10 @@
 <?php
 
-require $_SERVER["DOCUMENT_ROOT"] . '/controller/CRUD.php';
+require $_SERVER["DOCUMENT_ROOT"] . '/controller/user_defined_functions.php';
 require $_SERVER["DOCUMENT_ROOT"] . '/model/Constant.php';
 
-$crudObject = new CRUD();
 //CREATING HTML DATA FOR DEPARTMENT SELECT TAG
-$departmentData = $crudObject->fetchDataSql('SELECT * FROM departments ORDER BY department_name');
+$departmentData = fetchDepartmentData();
 
 $departmentSelect = null;
 foreach ($departmentData as $department) {
@@ -15,7 +14,7 @@ foreach ($departmentData as $department) {
 //CREATING HTML DATA FOR COLLEGE SELECT TAG
 $collegeSelect = null;
 
-$collegeData = $crudObject->fetchDataSql('SELECT * FROM colleges ORDER BY college_name');
+$collegeData = fetchCollegeData();
 foreach ($collegeData as $college) {
     $collegeSelect .= "<option value='" . $college["college_id"] . "'>" . $college["college_name"] . ' - ' . $college["college_city"] . "</option>";
 }
@@ -23,7 +22,7 @@ foreach ($collegeData as $college) {
 //CREATING HTML DATA FOR UNIVERSITY SELECT TAG
 $universitySelect = null;
 
-$universityData = $crudObject->fetchDataSql('SELECT * FROM universities ORDER BY university_name');
+$universityData = fetchUniversityData();
 foreach ($universityData as $university) {
     $universitySelect .= "<option value='" . $university["university_id"] . "'>" . $university["university_name"] . "</option>";
 }
@@ -64,7 +63,7 @@ foreach ($universityData as $university) {
         <div id="resultMessage" class="alert alert-danger" role="alert">
             <!-- FOR MESSAGE SHOWING -->
         </div>
-        
+
         <div>
             <div id="login-container" class="d-flex justify-content-center">
                 <div id="login-box" class="bg-dark rounded w-50 my-4">

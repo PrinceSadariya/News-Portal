@@ -14,7 +14,7 @@ if (isset($_GET["banner_id"])) {
     $deleteId = $_GET["banner_id"];
 
     $bannerObject = new Banner();
-    $bannerData = $bannerObject->fetchBanner('*', ["banner_id" => $deleteId]);
+    $bannerData = $bannerObject->fetchBanner('banner_image', ["banner_id" => $deleteId]);
 
     $bannerImage = $bannerData[0]["banner_image"];
 
@@ -45,6 +45,7 @@ if (isset($_GET["success_msg"])) {
             echo "Banner has been updated successfully";
         }
         ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php
 }

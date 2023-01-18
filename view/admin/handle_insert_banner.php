@@ -68,7 +68,7 @@ if (trim($_POST["bannerTitle"]) != '' || $_POST["bannerStatus"] != '') {
         }
     } else {
         //OLD DATA
-        $oldBannerData = $bannerObject->fetchBanner('*', ["banner_id" => $_POST["bannerId"]]);
+        $oldBannerData = $bannerObject->fetchBanner('banner_image', ["banner_id" => $_POST["bannerId"]]);
 
         $oldBannerImage = $oldBannerData[0]["banner_image"];
 

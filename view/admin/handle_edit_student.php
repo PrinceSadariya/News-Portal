@@ -9,8 +9,8 @@ $studentObject = new Student();
 
 if (!empty($userName) &&  !empty($userPassword) && !empty($firstName) && !empty($lastName) && !empty($middleName) && !empty($gender) && !empty($email) && !empty($mobile) && !empty($department) && !empty($college) && !empty($university)) {
 
-    $studentData = $studentObject->fetchStudents('*', ["email" => $email]);
-    $currentData = $studentObject->fetchStudents('*', ["student_id" => $studentId]);
+    $studentData = $studentObject->fetchStudents('student_id', ["email" => $email]);
+    $currentData = $studentObject->fetchStudents('email', ["student_id" => $studentId]);
 
     $currentEmail = $currentData[0]["email"];
 

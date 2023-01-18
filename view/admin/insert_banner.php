@@ -12,7 +12,7 @@ if (isset($_GET["banner_id"])) {
 
     $bannerObject = new Banner();
 
-    $bannerData = $bannerObject->fetchBanner('*', ["banner_id" => $bannerId]);
+    $bannerData = $bannerObject->fetchBanner('banner_image,banner_title,banner_status', ["banner_id" => $bannerId]);
 
     $bannerImage = $bannerData[0]["banner_image"];
     $bannerTitle = $bannerData[0]["banner_title"];

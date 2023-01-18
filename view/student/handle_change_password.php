@@ -9,7 +9,7 @@ if (!empty($oldPassword) && !empty($newPassword)) {
 
         $studentObject = new Student();
 
-        $studentData = $studentObject->fetchStudents('*', ['student_id' => $studentId]);
+        $studentData = $studentObject->fetchStudents('user_password', ['student_id' => $studentId]);
 
         $currentPassword = $studentData[0]["user_password"];
 

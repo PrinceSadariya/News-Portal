@@ -51,7 +51,7 @@ if (trim($_POST["newsTitle"]) != '' || $_POST["newsDetail"] != '') {
         }
     } else {
         //OLD DATA
-        $oldNewsData = $newsObject->fetchNews('*', ["news_id" => $_POST["newsId"]]);
+        $oldNewsData = $newsObject->fetchNews('news_image', ["news_id" => $_POST["newsId"]]);
 
         $oldNewsImage = $oldNewsData[0]["news_image"];
 

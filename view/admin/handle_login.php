@@ -9,7 +9,7 @@ if (trim($userEmail) != '' && trim($userPassword) != '') {
     $userObject = new User();
     if ($userRole == "1") {
         //ADMIN LOGIN
-        $userData = $userObject->fetchUsers('*', ["user_role" => "1", "user_email" => $userEmail]);
+        $userData = $userObject->fetchUsers('user_id,user_name,user_password', ["user_role" => "1", "user_email" => $userEmail]);
         if (!empty($userData)) {
             if ($userData[0]["user_password"] == $userPassword) {
                 session_start();
@@ -25,7 +25,7 @@ if (trim($userEmail) != '' && trim($userPassword) != '') {
         }
     } elseif ($userRole == "2") {
         //SUPERADMIN LOGIN
-        $userData = $userObject->fetchUsers('*', ["user_role" => "2", "user_email" => $userEmail]);
+        $userData = $userObject->fetchUsers('user_id,user_name,user_password', ["user_role" => "2", "user_email" => $userEmail]);
         if (!empty($userData)) {
             if ($userData[0]["user_password"] == $userPassword) {
                 session_start();

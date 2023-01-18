@@ -12,7 +12,7 @@ if (isset($_GET['university_id'])) {
 
     $universityObject = new University();
 
-    $universityData = $universityObject->fetchUniversities('*', ["university_id" => $universityId]);
+    $universityData = $universityObject->fetchUniversities('university_name,university_city,university_state', ["university_id" => $universityId]);
 
     $universityName = $universityData[0]["university_name"];
     $universityCity = $universityData[0]["university_city"];
@@ -36,7 +36,7 @@ if (isset($_GET['university_id'])) {
             }  ?>
         </h2>
     </div>
-    
+
     <div class="mt-4 d-flex justify-content-center">
         <div class="w-75">
             <form id="universityForm" method="POST">

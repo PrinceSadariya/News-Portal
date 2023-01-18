@@ -12,7 +12,7 @@ if (isset($_GET['college_id'])) {
 
     $collegeObject = new College();
 
-    $collegeData = $collegeObject->fetchColleges('*', ["college_id" => $collegeId]);
+    $collegeData = $collegeObject->fetchColleges('college_name,college_city,college_state', ["college_id" => $collegeId]);
 
     $collegeName = $collegeData[0]["college_name"];
     $collegeCity = $collegeData[0]["college_city"];

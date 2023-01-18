@@ -8,7 +8,7 @@ if (isset($_GET["college_id"])) {
     $deleteId = $_GET["college_id"];
 
     $studentObject = new Student();
-    $studentData = $studentObject->fetchStudents('*', ["college" => $deleteId]);
+    $studentData = $studentObject->fetchStudents('student_id', ["college" => $deleteId]);
 
     if (empty($studentData)) {
         $collegeObject = new College();

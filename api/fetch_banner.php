@@ -8,7 +8,7 @@ if ($_POST["token"] === "prince_sadariya") {
 
     $crudObject = new CRUD();
 
-    $bannerData = $crudObject->fetchDataSql("SELECT * FROM banners WHERE banner_status = 1");
+    $bannerData = $crudObject->fetchDataSql("SELECT banner_image FROM banners WHERE banner_status = 1");
 
     echo json_encode(["result" => "data found", "data" => $bannerData]);
 } else {

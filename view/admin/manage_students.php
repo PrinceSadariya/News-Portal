@@ -15,7 +15,7 @@ if (isset($_GET["student_id"])) {
 
     $studentObject = new Student();
 
-    $studentData = $studentObject->fetchStudents('*', ["student_id" => $studentId]);
+    $studentData = $studentObject->fetchStudents('profile_picture', ["student_id" => $studentId]);
 
     $studentProfile = $studentData[0]["profile_picture"];
 
@@ -123,7 +123,7 @@ if (isset($_GET["profile"]) && $_GET["profile"] == "change") {
                     }
                     $crudObject = new CRUD();
 
-                    $studentData = $crudObject->fetchDataSql("SELECT * FROM students JOIN departments ON students.department = departments.department_id JOIN colleges ON students.college = colleges.college_id JOIN universities ON students.university = universities.university_id");
+                    $studentData = fetchStudentData();
                     $i = 0;
                     foreach ($studentData as $student) {
                         $i++;

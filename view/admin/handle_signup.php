@@ -7,7 +7,7 @@ extract($_POST);
 if (!empty($userRole) && !empty($userName) && !empty($userEmail) && !empty($userPassword)) {
     $userObject = new User();
 
-    $userData = $userObject->fetchUsers('*', ["user_email" => $userEmail]);
+    $userData = $userObject->fetchUsers('user_id', ["user_email" => $userEmail]);
 
     if (empty($userData)) {
         $userObject->setUserVariables($_POST);

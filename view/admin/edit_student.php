@@ -39,9 +39,9 @@ if (isset($_GET["student_id"])) {
     $collegeData = fetchCollegeData();
     foreach ($collegeData as $college) {
         if ($college["college_id"] == $collegeId) {
-            $collegeSelect .= "<option value='" . $college["college_id"] . "' selected>" . $college["college_name"] . "</option>";
+            $collegeSelect .= "<option value='" . $college["college_id"] . "' selected>" . $college["college_name"] . $college["college_city"] . "</option>";
         } else {
-            $collegeSelect .= "<option value='" . $college["college_id"] . "'>" . $college["college_name"] . "</option>";
+            $collegeSelect .= "<option value='" . $college["college_id"] . "'>" . $college["college_name"] . ' - ' . $college["college_city"] . "</option>";
         }
     }
 

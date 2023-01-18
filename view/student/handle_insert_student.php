@@ -12,8 +12,8 @@ if (!empty($userName) && !empty($firstName) && !empty($lastName) && !empty($midd
     if ($studentId != '') {
         //FOR UPDATING DATA
 
-        $studentData = $studentObject->fetchStudents('*', ["email" => $email]);
-        $currentData = $studentObject->fetchStudents('*', ["student_id" => $studentId]);
+        $studentData = $studentObject->fetchStudents('student_id', ["email" => $email]);
+        $currentData = $studentObject->fetchStudents('email', ["student_id" => $studentId]);
 
         $currentEmail = $currentData[0]["email"];
 
@@ -47,7 +47,7 @@ if (!empty($userName) && !empty($firstName) && !empty($lastName) && !empty($midd
         // FOR INSERTING DATA
 
         if ($userPassword === $userConfirmPassword) {
-            $studentData = $studentObject->fetchStudents('*', ["email" => $email]);
+            $studentData = $studentObject->fetchStudents('student_id', ["email" => $email]);
 
             if (empty($studentData)) {
 
@@ -65,7 +65,8 @@ if (!empty($userName) && !empty($firstName) && !empty($lastName) && !empty($midd
                             $inserted = $studentObject->insertStudent($_POST, $profilePictureName);
 
                             if ($inserted) {
-                                $studentData = $studentObject->fetchStudents('*', ["email" => $email]);
+                                //FOR TAKING STUDENT_ID AFTER INSERTING
+                                $studentData = $studentObject->fetchStudents('student_id', ["email" => $email]);
 
                                 $studentId = $studentData[0]["student_id"];
 

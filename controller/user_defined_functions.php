@@ -9,14 +9,17 @@ require_once 'CRUD.php';
  * 
  * @return array array of studentData based on condition 
  */
-function fetchStudentData($studentId)
+function fetchStudentData($studentId = null)
 {
     $crudObject = new CRUD();
 
     $studentData = array();
 
-    $studentData = $crudObject->fetchDataSql("SELECT * FROM students JOIN departments ON students.department = departments.department_id JOIN colleges ON students.college = colleges.college_id JOIN universities ON students.university = universities.university_id WHERE student_id=$studentId");
-
+    if ($studentId === null) {
+        $studentData = $crudObject->fetchDataSql("SELECT * FROM students JOIN departments ON students.department = departments.department_id JOIN colleges ON students.college = colleges.college_id JOIN universities ON students.university = universities.university_id");
+    } else {
+        $studentData = $crudObject->fetchDataSql("SELECT * FROM students JOIN departments ON students.department = departments.department_id JOIN colleges ON students.college = colleges.college_id JOIN universities ON students.university = universities.university_id WHERE student_id=$studentId");
+    }
     return $studentData;
 }
 
@@ -31,7 +34,7 @@ function fetchDepartmentData()
 
     $departmentData = array();
 
-    $departmentData =  $crudObject->fetchDataSql('SELECT * FROM departments ORDER BY department_name');
+    $departmentData =  $crudObject->fetchDataSql('SELECT department_id,department_name FROM departments ORDER BY department_name');
 
     return $departmentData;
 }
@@ -47,7 +50,7 @@ function fetchCollegeData()
 
     $collegeData = array();
 
-    $collegeData = $crudObject->fetchDataSql('SELECT * FROM colleges ORDER BY college_name');
+    $collegeData = $crudObject->fetchDataSql('SELECT college_id,college_name,college_city FROM colleges ORDER BY college_name');
 
     return $collegeData;
 }
@@ -64,7 +67,7 @@ function fetchUniversityData()
 
     $universityData = array();
 
-    $universityData = $crudObject->fetchDataSql('SELECT * FROM universities ORDER BY university_name');
+    $universityData = $crudObject->fetchDataSql('SELECT university_id,university_name FROM universities ORDER BY university_name');
 
     return $universityData;
 }

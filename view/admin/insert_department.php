@@ -10,7 +10,7 @@ if (isset($_GET['department_id'])) {
 
     $departmentObject = new Department();
 
-    $departmentData = $departmentObject->fetchDepartments('*', ["department_id" => $departmentId]);
+    $departmentData = $departmentObject->fetchDepartments('department_name', ["department_id" => $departmentId]);
 
     $departmentName = $departmentData[0]["department_name"];
 }
